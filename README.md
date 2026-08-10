@@ -12,7 +12,7 @@ This is the starter kit from my video *How I'd Build a Content Brand With AI in 
 
 1. **Clone this repo** (or fork it, or download it — any copy works):
    ```
-   git clone https://github.com/Jason-Cyr/content-brand-starter.git my-brand
+   git clone https://github.com/Jason-Cyr/one-person-brand.git my-brand
    cd my-brand
    ```
 2. **Open your AI agent in the folder.** Claude Code, Cursor, or any agent that can read files and run git. It will find its instructions automatically (`CLAUDE.md` / `AGENTS.md`).
