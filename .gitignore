@@ -1,0 +1,10 @@
+# Rendered output — regenerate with design-system/render.py
+out/
+_shot-*.png
+
+# Large binaries — keep the vault light; store originals elsewhere if they grow
+Assets/
+
+# OS noise
+.DS_Store
+Thumbs.db

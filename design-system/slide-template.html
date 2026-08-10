@@ -1,0 +1,64 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>slide-template — your brand as code</title>
+<!--
+  STARTER TEMPLATE — deliberately neutral. The agent's first design-system job
+  is to replace these tokens with the human's brand (see ../playbooks/03-design-system.md):
+  pick a ground, an ink, ONE accent, two typefaces with roles, and a fixed type scale.
+  Then every surface renders from the same tokens and the brand cannot drift.
+
+  Formats: class "slide" = 1080x1350 (4:5 post) · add "reel" = 1080x1920 ·
+  add "yt" = 1920x1080 · add "thumb" = 1280x720. render.py reads the class.
+
+  Render:  python3 render.py slide-template.html --out out/
+  (Needs Chrome/Chromium + Pillow. Override browser with CHROME=/path/to/chrome)
+
+  Rules that survive every brand:
+  - Judge renders at feed size (~380px wide post, ~168px thumbnail), not full-screen.
+  - If a slide feels full, cut content — never shrink type below the scale.
+  - Accent on the load-bearing word only. One accent color, used sparingly, beats three.
+-->
+<style>
+  :root{
+    /* ==== TOKENS — replace these with the human's brand ==== */
+    --ground:#111111;      /* the canvas */
+    --ink:#F2EFE9;         /* display + primary text */
+    --muted:#9A968E;       /* support text, captions, metadata */
+    --accent:#E0B94F;      /* the ONE accent. Emphasis, marks, hot words */
+    --rule:#2C2C30;        /* hairlines and panel strokes */
+    /* type scale — pick 4-6 steps and never invent in-betweens */
+    --s1:26px; --s2:40px; --s3:64px; --s4:96px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--ground)}
+  .slide{position:relative;overflow:hidden;display:none;background:var(--ground);
+    color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+    width:1080px;height:1350px;padding:96px}
+  .slide.reel{width:1080px;height:1920px;padding:96px 96px 460px}
+  .slide.yt{width:1920px;height:1080px;padding:90px 120px}
+  .slide.thumb{width:1280px;height:720px;padding:60px}
+  .slide.show{display:block}
+
+  .kicker{font-family:'Courier New',monospace;font-size:var(--s1);letter-spacing:3px;
+    text-transform:uppercase;color:var(--muted)}
+  h1{font-size:var(--s4);line-height:1.04;letter-spacing:-1px;margin-top:48px;font-weight:700}
+  h1 em{font-style:normal;color:var(--accent)}
+  .support{font-family:Helvetica,Arial,sans-serif;font-size:var(--s2);line-height:1.5;
+    color:var(--muted);margin-top:44px;max-width:820px}
+  .support b{color:var(--ink)}
+  .footer{position:absolute;left:96px;bottom:88px;right:96px;display:flex;justify-content:space-between;
+    font-family:'Courier New',monospace;font-size:var(--s1);letter-spacing:2px;color:var(--muted)}
+</style>
+
+<!-- Slide 1: the hero statement archetype — one sentence, one accented word -->
+<div class="slide">
+  <div class="kicker">Your series / No. 01</div>
+  <h1>One strong sentence with the <em>key word</em> accented.</h1>
+  <div class="support">Two lines of support at most. If it needs more, it's a different slide. <b>Bold the beat that matters.</b></div>
+  <div class="footer"><span>YOURNAME.COM</span><span>1/1</span></div>
+</div>
+
+<script>
+  const n = parseInt(new URLSearchParams(location.search).get('slide') || '1', 10);
+  document.querySelectorAll('.slide')[n-1].classList.add('show');
+</script>
