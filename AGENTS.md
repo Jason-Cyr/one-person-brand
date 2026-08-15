@@ -10,6 +10,8 @@ If this repo still contains `templates/` and `playbooks/` at the root and there 
 
 **URL-first setup (you are not inside the repo yet):** the human may simply hand you this repo's URL — *"set up my content brand from https://github.com/Jason-Cyr/one-person-brand"*, or just the link. That is a complete instruction; do not ask them to clone anything. Clone it yourself — `git clone https://github.com/Jason-Cyr/one-person-brand.git my-brand` — into a fresh `my-brand/` folder (or a name/location they gave you). Never scaffold a vault inside a directory that already contains unrelated work. Then work inside the clone and continue below exactly as if you had started there.
 
+**No-git-history copies (ZIP download, copied folder):** if the working copy has no `.git`, run `git init` before anything else. The memory needs version history — the human's hand-edits between sessions reach you as diffs. Git is local; this does not require GitHub or any account.
+
 ### 1. Interview — short, not a form
 
 Ask only what you need to scaffold well (batch the questions; don't interrogate):
@@ -43,7 +45,7 @@ Then move this starter's teaching material out of the way so the vault is clean:
 
 ### 3. First commit
 
-`git add -A`, commit (`"bootstrap content brand vault: <projects>"`), push if a remote exists. If there's no remote, tell the human in one line how to create a private GitHub repo and push — private by default; this is their memory, not content.
+`git add -A`, commit (`"bootstrap content brand vault: <projects>"`), push if a remote exists. If there's no remote, the vault is complete as-is — a local folder is the intended default. Mention once, in one line, as optional: a **private** remote (GitHub or similar) makes the vault follow them across devices; offer to set it up only if they want that. Never present a remote as required, and never suggest a public one — this is their memory, not content.
 
 ### 4. Tell them what happened
 
@@ -54,7 +56,7 @@ Three sentences, not a tour: what you built, the one habit that matters (*start 
 These rules are non-negotiable. They are what makes the memory compound instead of rot.
 
 1. **Read before you work.** At the start of any session, read the relevant project's `context.md` in full (and `pipeline.md` if present). Never start from zero; never ask the human to re-brief you on things the files already say.
-2. **Commit and push every change.** After each logical unit of work — not just at session end — commit with a clear message and push. Never end a session with a dirty working tree. Never force-push; never rewrite history. The human may edit files by hand between sessions: **read the recent diffs** (`git log --stat`, `git diff HEAD~5`) — their edits are briefings you weren't in the room for.
+2. **Commit every change** (and push, if a remote exists). After each logical unit of work — not just at session end — commit with a clear message. Never end a session with a dirty working tree. Never force-push; never rewrite history. The human may edit files by hand between sessions: **read the recent diffs** (`git log --stat`, `git diff HEAD~5`) — their edits are briefings you weren't in the room for.
 3. **Write back before you finish.** Any session that changed anything updates the project's `context.md`: decisions made (with the *why*), work produced, next actions, open questions, and a dated session-log line. If the work moved a pipeline item's stage, update `pipeline.md` too.
 4. **Non-destructive, always.** Never overwrite substantial human-written content — append, or propose the change and let them decide. Preserve their voice in anything you edit.
 5. **The vault is the tracker.** No external to-do apps, no side channels. If it matters, it's in a file. `0. Inbox/` catches strays; empty it into the right places when asked to tidy.
