@@ -31,21 +31,26 @@ Create this structure (PARA — keep the names exactly, the numbering keeps them
 3. Resources/      ← reference material, guides, research
 4. Archive/        ← finished or shelved projects, moved whole
 Daily Notes/       ← optional; one file per day if the human wants a log
-Assets/            ← binaries (photos, exports). Add to .gitignore if large.
+Assets/            ← binaries (photos, exports). Already gitignored by the kit to keep the vault light.
 ```
 
-For **each active project** the human named, create `1. Projects/<name>/`:
+Put a `.gitkeep` file in every folder that would otherwise be empty — git does not track empty directories, and without this the PARA skeleton silently vanishes from the first commit.
+
+For **each active project** the human named, create `1. Projects/<name>/` (use their name for it verbatim — spaces and punctuation are fine; don't slugify):
 - `context.md` — from `templates/context.md`. Fill in everything you learned in the interview. This file is the project's living memory.
 - `pipeline.md` — from `templates/pipeline.md`, if the project produces recurring pieces of work (videos, posts, releases). Skip it for one-shot projects.
 
 Then move this starter's teaching material out of the way so the vault is clean:
 - Move `playbooks/`, `templates/`, and `design-system/` into `3. Resources/starter-kit/`.
 - Rewrite `README.md` to describe *their* vault in 5 lines (keep a link to this starter for credit).
-- Keep `AGENTS.md` and `CLAUDE.md` at the root — update the Mode 1 trigger line so you never re-bootstrap.
+- Keep `AGENTS.md` and `CLAUDE.md` at the root. In AGENTS.md, replace Mode 1's first paragraph with: *"This vault was bootstrapped on <date> for <name> — do NOT run bootstrap again. Operate in Mode 2."* (CLAUDE.md needs no edit — it has no trigger line.)
 
 ### 3. First commit
 
-`git add -A`, commit (`"bootstrap content brand vault: <projects>"`), push if a remote exists. If there's no remote, the vault is complete as-is — a local folder is the intended default. Mention once, in one line, as optional: a **private** remote (GitHub or similar) makes the vault follow them across devices; offer to set it up only if they want that. Never present a remote as required, and never suggest a public one — this is their memory, not content.
+`git add -A`, commit (`"bootstrap content brand vault: <projects>"`). Then handle the remote — carefully:
+- **If `origin` points at this starter kit or a fork of it** (any URL containing `one-person-brand`): `git remote remove origin`. The kit is a seed, not their upstream — never push a human's vault toward the starter repo or a public fork; that would publish their private memory.
+- **If a remote the human owns exists**, push to it.
+- **Otherwise the vault is complete as-is** — a local folder is the intended default. Mention once, in one line, as optional: a **private** remote (GitHub or similar) makes the vault follow them across devices; offer to set it up only if they want that. Never present a remote as required, and never suggest a public one — this is their memory, not content.
 
 ### 4. Tell them what happened
 
@@ -66,13 +71,15 @@ These rules are non-negotiable. They are what makes the memory compound instead 
 
 The vault is Layer 1 of a six-layer system for running a content brand solo (see `playbooks/`, or `3. Resources/starter-kit/playbooks/` after bootstrap). When the human's need matches a layer, read its playbook first, then build it *inside the vault*:
 
-| When the human says… | Read |
+| When the human says… | Read (post-bootstrap path) |
 |---|---|
-| "what should I make / who is this for" | `playbooks/02-strategy.md` |
-| "my visuals look inconsistent / take forever" | `playbooks/03-design-system.md` |
-| "scripting / editing takes too long" | `playbooks/04-production.md` |
-| "I want more output from what I already make" | `playbooks/05-repurposing.md` |
-| "I published — now what / did it work" | `playbooks/06-distribution.md` |
+| "what should I make / who is this for" | `3. Resources/starter-kit/playbooks/02-strategy.md` |
+| "my visuals look inconsistent / take forever" | `3. Resources/starter-kit/playbooks/03-design-system.md` |
+| "scripting / editing takes too long" | `3. Resources/starter-kit/playbooks/04-production.md` |
+| "I want more output from what I already make" | `3. Resources/starter-kit/playbooks/05-repurposing.md` |
+| "I published — now what / did it work" | `3. Resources/starter-kit/playbooks/06-distribution.md` |
+
+(Before bootstrap the playbooks are still at the repo root — same filenames.)
 
 Each playbook names its starter templates (`templates/positioning.md`, `pillars.md`, `script.md`, `repurposing-map.md`, `launch-checklist.md`, `launch-tracking.md`) — copy and fill rather than inventing structure.
 
