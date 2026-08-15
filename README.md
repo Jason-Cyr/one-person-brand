@@ -10,22 +10,31 @@ This is the starter kit from my video *How I'd Build a Content Brand With AI in 
 
 ## How to use it (2 minutes)
 
+**The easiest way** — open your AI agent (Claude Code, Cursor, or any agent that can read files and run git) and say:
+
+> *"Set up my content brand from https://github.com/Jason-Cyr/one-person-brand"*
+
+That's genuinely all you do. Your agent clones the kit and takes it from there — it will ask you a few questions as it goes (what you're working on, what kind of content you make, where it gets published) and build your vault from the answers.
+
+**Prefer to clone it yourself first?** Works exactly the same:
+
 1. **Clone this repo** (or fork it, or download it — any copy works):
    ```
    git clone https://github.com/Jason-Cyr/one-person-brand.git my-brand
    cd my-brand
    ```
-2. **Open your AI agent in the folder.** Claude Code, Cursor, or any agent that can read files and run git. It will find its instructions automatically (`CLAUDE.md` / `AGENTS.md`).
+2. **Open your AI agent in the folder.** It will find its instructions automatically (`CLAUDE.md` / `AGENTS.md`).
 3. **Say:** *"Set up my content brand."*
 
 ## What to expect (so nothing surprises you)
 
 When you say "set up my content brand," here's what your agent will do, in order:
 
-1. **Interview you, briefly** — what you're working on, what you make, where it gets published, and how you like to sound. A few questions, not a form.
-2. **Scaffold your vault** — a small folder structure (called PARA) plus a `context.md` memory file for each of your active projects, pre-filled with what you told it.
-3. **Tidy this starter out of the way** — the teaching material moves into your Resources folder; the repo becomes *your* vault, not my starter.
-4. **Commit everything with git** — and show you how to push it to a **private** repo of your own. (Fork/clone first for exactly this reason: your memory should be private; this repo is just the seed.)
+1. **Fetch the kit** — if you handed it the URL, it clones the repo itself. You don't touch git.
+2. **Interview you, briefly** — what you're working on, what kind of content you make, where it gets published, and how you like to sound. A few questions, not a form.
+3. **Scaffold your vault** — a small folder structure (called PARA) plus a `context.md` memory file for each of your active projects, pre-filled with what you told it.
+4. **Tidy this starter out of the way** — the teaching material moves into your Resources folder; the repo becomes *your* vault, not my starter.
+5. **Commit everything with git** — and show you how to push it to a **private** repo of your own. (Private for exactly this reason: your memory is not content; this repo is just the seed.)
 
 From then on, every session starts with the agent reading your project's memory and ends with it writing back what you decided. You'll notice the difference within a week: **you stop re-briefing your own assistant.** Every conversation makes the next one smarter.
 

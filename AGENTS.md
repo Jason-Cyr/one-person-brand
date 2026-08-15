@@ -8,6 +8,8 @@ This file is your manual. The human should never need to read it.
 
 If this repo still contains `templates/` and `playbooks/` at the root and there is no `1. Projects/` folder yet, the vault has not been set up. When the human asks you to set it up (in any words — "set up my content brand," "set up my second brain," "get me started"), do this:
 
+**URL-first setup (you are not inside the repo yet):** the human may simply hand you this repo's URL — *"set up my content brand from https://github.com/Jason-Cyr/one-person-brand"*, or just the link. That is a complete instruction; do not ask them to clone anything. Clone it yourself — `git clone https://github.com/Jason-Cyr/one-person-brand.git my-brand` — into a fresh `my-brand/` folder (or a name/location they gave you). Never scaffold a vault inside a directory that already contains unrelated work. Then work inside the clone and continue below exactly as if you had started there.
+
 ### 1. Interview — short, not a form
 
 Ask only what you need to scaffold well (batch the questions; don't interrogate):
