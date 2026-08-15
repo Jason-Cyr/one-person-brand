@@ -34,7 +34,7 @@ Daily Notes/       ← optional; one file per day if the human wants a log
 Assets/            ← binaries (photos, exports). Already gitignored by the kit to keep the vault light.
 ```
 
-Put a `.gitkeep` file in every folder that would otherwise be empty — git does not track empty directories, and without this the PARA skeleton silently vanishes from the first commit.
+Put a `.gitkeep` file in every folder that would otherwise be empty (except `Assets/` — it's gitignored) — git does not track empty directories, and without this the PARA skeleton silently vanishes from the first commit.
 
 For **each active project** the human named, create `1. Projects/<name>/` (use their name for it verbatim — spaces and punctuation are fine; don't slugify):
 - `context.md` — from `templates/context.md`. Fill in everything you learned in the interview. This file is the project's living memory.
