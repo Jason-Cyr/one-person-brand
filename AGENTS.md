@@ -1,8 +1,16 @@
 # AGENTS.md — One-Person Brand · agent operating manual
 
-You (the agent) are reading the starter kit for a one-person content brand. Its foundation is a **second brain**: a git repo of markdown files that you and your human both read and write, and that serves as your shared, compounding memory. Your job is to (1) build it for them, and (2) operate inside it correctly forever after.
+This is the operating manual for a one-person content brand built on a **second brain**: a git repo of markdown files that you and your human both read and write, and that serves as your shared, compounding memory. Your job is to operate inside it correctly — and, if it has not been built yet, to build it first (Mode 1).
 
 This file is your manual. The human should never need to read it.
+
+## Where things live
+
+These paths hold **after** the vault is set up, which is the state you will almost always find it in:
+
+- `.claude/agents/` and `.claude/skills/` — the critic bench, the designer, and the skills. Root, always.
+- `design-system/` — `DESIGN.md`, `RUBRIC.md`, `render.py`, templates. Root, always. Working parts, not reference material.
+- `3. Resources/starter-kit/playbooks/` and `…/templates/` — the six layer playbooks and the file scaffolds. **Anywhere in this repo that says `playbooks/…` or `templates/…` bare, read it as `3. Resources/starter-kit/…`.** That path contains spaces — quote it in shell commands.
 
 ## Mode 1 — Bootstrap (first contact)
 
@@ -40,25 +48,31 @@ Write down anything that is true of the human rather than of one project — the
 
 For **each active project**, create `1. Projects/<name>/` (spaces and punctuation are fine; don't slugify). **People describe projects rather than naming them** — "an Instagram account", "a blog I've been neglecting". If they gave you a real name ("Slow Clay"), use it verbatim. If they only described it, propose a short obvious name, use it, and tell them in one line that folders are safe to rename whenever they like. Don't stall the bootstrap over naming, and don't invent something clever.
 - `context.md` — from `templates/context.md`. Fill in everything you learned in the interview. This file is the project's living memory.
-- `pipeline.md` — from `templates/pipeline.md`, if the project produces recurring pieces of work (videos, posts, releases). Skip it for one-shot projects; if it's genuinely borderline, create it — an unused tracker costs nothing, a missing one costs the habit. **Rename the template's default stages to the human's actual craft.** They ship as a video chain (`Researching → Packaging → Shipping`), which is nonsense for an email essay or a batch of pots. Ask yourself what steps *this* person's work passes through, and write those.
+- `pipeline.md` — from `templates/pipeline.md`, if the project produces recurring pieces of work (videos, posts, releases). Skip it for one-shot projects; if it's genuinely borderline, create it — an unused tracker costs nothing, a missing one costs the habit. **Rename the template's default stages to the human's actual craft.** They ship as a publishing chain (`Idea → Researching → Making → Packaging → Ready → Shipping → Published`), which is close to nonsense for an email essay or a batch of pots — a potter's real stages run through the kiln. Ask yourself what steps *this* person's work passes through, and write those.
 
 Then move this starter's teaching material out of the way so the vault is clean:
 - Move `playbooks/` and `templates/` into `3. Resources/starter-kit/`.
 - **Leave `design-system/` at the root.** It is a working part of the vault, not teaching material: `render.py` is executable, `RUBRIC.md` is where the human's taste accumulates over months, and `DESIGN.md` gets written into it later. Every reference to these files across the kit assumes the root path.
 - Rewrite `README.md` to describe *their* vault in 5 lines (keep a link to this starter for credit).
-- Keep `AGENTS.md` and `CLAUDE.md` at the root. In AGENTS.md, **delete the whole of Mode 1** — every step, not just its opening line — and leave in its place: *"This vault was bootstrapped on <date> for <name> — do NOT run bootstrap again. Operate in Mode 2."* Deleting only the first paragraph leaves the entire bootstrap procedure live under a heading that says not to run it, and removes the very condition that would have stopped a later agent from running it. In CLAUDE.md, change "how to bootstrap the human's second brain on first contact, and" to nothing — the rest of that file stays as-is.
+- Keep `AGENTS.md` and `CLAUDE.md` at the root. In AGENTS.md, **delete the whole of Mode 1** — every step, not just its opening line — and leave in its place: *"This vault was bootstrapped on <date> for <name> — do NOT run bootstrap again."* Also trim the clause *"— and, if it has not been built yet, to build it first (Mode 1)"* from this file's opening paragraph, so nothing left in it points at a section that no longer exists. Deleting only the first paragraph leaves the entire bootstrap procedure live under a heading that says not to run it, and removes the very condition that would have stopped a later agent from running it. In CLAUDE.md, change "how to bootstrap the human's second brain on first contact, and" to nothing — the rest of that file stays as-is.
 - **Leave `.claude/` exactly where it is.** It holds the critic bench (see below) — those are working parts of the vault, not teaching material. Never move them into `3. Resources/`, and never delete them during tidy-up.
-- **Paths after the move.** `playbooks/…` and `templates/…` are now under `3. Resources/starter-kit/`. The playbooks still refer to each other and to `templates/…` by their old root-relative paths — read those as `3. Resources/starter-kit/…`. `design-system/` and `.claude/` are unchanged. Note the moved path contains spaces: quote it in shell commands.
+- The *Where things live* section at the top of this file already describes the post-move layout — it sits outside Mode 1 on purpose, so it survives the deletion below.
 
 ### 3. First commit
 
 **Deal with the remote *before* you commit** — a commit made while `origin` still points at the starter kit is one accidental `git push` away from publishing a stranger's private memory.
 
 - **If `origin` points at this starter kit or a fork of it** (any URL containing `one-person-brand`): `git remote remove origin`. The kit is a seed, not their upstream.
-- **If any other remote exists, do not push to it until you have checked that it is private and not a fork.** `gh repo view --json visibility,isFork` if `gh` is available; otherwise ask the human directly, in one line: *"Is <url> a private repo you own?"* **A fork is public by default, and the README invites forking** — so a remote that merely isn't the starter kit is not yet safe. Refuse to push to anything public or forked, and say why in one sentence. When in doubt, don't push; a missing backup is recoverable, a published vault is not.
+- **If any other remote exists, do not push to it until you have checked that it is private and not a fork.** `gh repo view --json visibility,isFork` if `gh` is available; otherwise ask the human directly, in one line: *"Is <url> a private repo you own?"* **A fork is public by default, and the README invites forking** — so a remote that merely isn't the starter kit is not yet safe. Refuse to push to anything public or forked, and say why in one sentence.
+  - **If you can neither check nor ask** (no `gh`, no human — the common unattended case): do not push, and do not remove the remote either, since deleting someone's remote on a guess is destructive. Write the unanswered question into the vault's `README.md` where they will see it — the one-line question plus the exact `git remote remove origin` command to run if the answer is no — and say so in the commit message. Leaving a visible question beats both a silent push and a silent deletion.
+  - When in doubt, don't push; a missing backup is recoverable, a published vault is not.
 - **Otherwise the vault is complete as-is** — a local folder is the intended default. Mention once, in one line, as optional: a **private** remote (GitHub or similar) makes the vault follow them across devices; offer to set it up only if they want that. Never present a remote as required, and never suggest a public one — this is their memory, not content.
 
-**Then check git can actually commit.** If `git config user.email` is empty, git aborts with *"Please tell me who you are"* — likely on a machine belonging to exactly the audience this kit targets. Set a repo-local identity from the interview (`git config --local user.name "<their name>"`, `git config --local user.email "<name>@localhost"`), mention it in one line so they can correct it, and move on. Do not fail the bootstrap over it, and do not commit under an invented identity without saying so.
+**Then check who git will commit as.** Two failures, not one:
+- **Empty** — git aborts with *"Please tell me who you are"*, likely on a machine belonging to exactly the audience this kit targets.
+- **Set, but not to the human** — on a cloud or agent machine it is often the *agent's* identity. This is the more common case and it passes an is-it-empty check silently, so the human's own memory ends up authored by an AI's email address forever.
+
+In both cases set a repo-local identity from the interview (`git config --local user.name "<their name>"`, `git config --local user.email "<their email or name@localhost>"`), and say in one line what you set so they can correct it. Never commit a human's vault under an agent's identity without telling them.
 
 Now `git add -A` and commit (`"bootstrap content brand vault: <projects>"`).
 
@@ -70,8 +84,8 @@ Three sentences, not a tour: what you built, the one habit that matters (*start 
 
 These rules are non-negotiable. They are what makes the memory compound instead of rot.
 
-1. **Read before you work.** At the start of any session, read the relevant project's `context.md` in full (and `pipeline.md` if present). Never start from zero; never ask the human to re-brief you on things the files already say. **If the project has no `context.md`, create one from `templates/context.md` before you do anything else** — fill in what you can from the folder's existing files and say in one line that you did. A project without memory is the exact failure this vault exists to prevent, so fix it on sight rather than working around it.
-2. **Commit every change** (and push, if a remote exists). After each logical unit of work — not just at session end — commit with a clear message. Never end a session with a dirty working tree. Never force-push; never rewrite history. The human may edit files by hand between sessions: **read the recent diffs** (`git log --stat`, `git diff HEAD~5`) — their edits are briefings you weren't in the room for.
+1. **Read before you work.** At the start of any session, read the relevant project's `context.md` in full (and `pipeline.md` if present). Never start from zero; never ask the human to re-brief you on things the files already say. **If the project has no `context.md`, create one from `3. Resources/starter-kit/templates/context.md` before you do anything else** — fill in what you can from the folder's existing files and say in one line that you did. A project without memory is the exact failure this vault exists to prevent, so fix it on sight rather than working around it.
+2. **Commit every change** — and push only to a remote the human has confirmed is private and not a fork (the full rule is in the first-commit step; it does not lapse after bootstrap). After each logical unit of work — not just at session end — commit with a clear message. Never end a session with a dirty working tree. Never force-push; never rewrite history. The human may edit files by hand between sessions: **read the recent diffs** (`git log --stat`, `git diff HEAD~5`) — their edits are briefings you weren't in the room for.
 3. **Write back before you finish.** Any session that changed anything updates the project's `context.md`: decisions made (with the *why*), work produced, next actions, open questions, and a dated session-log line. If the work moved a pipeline item's stage, update `pipeline.md` too.
 4. **Non-destructive, always.** Never overwrite substantial human-written content — append, or propose the change and let them decide. Preserve their voice in anything you edit.
 5. **The vault is the tracker.** No external to-do apps, no side channels. If it matters, it's in a file. `0. Inbox/` catches strays; empty it into the right places when asked to tidy.
@@ -97,7 +111,7 @@ You grade your own work too generously. Every agent does. The fix is structural:
 
 **Be honest about the tier and never launder tier 3 as tier 1.** A subagent cannot spawn another subagent, so a critic invoked from inside another agent is always tier 3 at best — if you are yourself a subagent, report your findings up and let the orchestrator run the critic. Isolation is the mechanism; a critic that shares your context is a rubber stamp, and a rubber stamp recorded as a review is worse than no review, because it retires the doubt without earning it.
 
-**Does bootstrap need a critic pass?** No — Mode 1 is scaffolding, not shipping, and blocking it on a review the environment may not support helps nobody. The gate starts the first time real work is committed to: a positioning doc, a plan, or anything with an audience. Don't run the bench on an empty vault.
+**Does setting up the vault need a critic pass?** No — scaffolding is not shipping, and blocking it on a review the environment may not support helps nobody. The gate starts the first time real work is committed to: a positioning doc, a plan, or anything with an audience. Don't run the bench on an empty vault.
 
 **The rules that make this work:**
 
@@ -128,7 +142,7 @@ Two of the three exist because research is where confident-sounding work does th
 
 ## Mode 3 — Grow (adding layers)
 
-The vault is Layer 1 of a six-layer system for running a content brand solo (see `playbooks/`, or `3. Resources/starter-kit/playbooks/` after bootstrap). When the human's need matches a layer, read its playbook first, then build it *inside the vault*:
+The vault is Layer 1 of a six-layer system for running a content brand solo (see `3. Resources/starter-kit/playbooks/`). When the human's need matches a layer, read its playbook first, then build it *inside the vault*:
 
 | When the human says… | Read (post-bootstrap path) |
 |---|---|
@@ -140,7 +154,7 @@ The vault is Layer 1 of a six-layer system for running a content brand solo (see
 
 (Before bootstrap the playbooks are still at the repo root — same filenames.)
 
-Each playbook names its starter templates (`templates/positioning.md`, `pillars.md`, `script.md`, `repurposing-map.md`, `launch-checklist.md`, `launch-tracking.md`) — copy and fill rather than inventing structure.
+Each playbook names its starter templates — all under `3. Resources/starter-kit/templates/` (`positioning.md`, `pillars.md`, `script.md`, `repurposing-map.md`, `launch-checklist.md`, `launch-tracking.md`) — copy and fill rather than inventing structure.
 
 The critic bench is not a layer — it is a gate that applies to all of them. Layer 3 without `art-director` produces a consistent brand nobody can read at feed size; Layer 2 without `first-principles` and `sceptic` produces a confident strategy doc built entirely out of other people's tactics.
 

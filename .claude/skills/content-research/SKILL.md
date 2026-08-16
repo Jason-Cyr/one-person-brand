@@ -22,7 +22,7 @@ The open seat is the intersection: demand present, crowd doing something specifi
 
 1. **Search the way the audience searches**, not the way the human describes their work. Their internal vocabulary is not the query. If they say "documentary photography workflow," the audience is typing "how to find something to shoot."
 2. **Go to the platform, not to blog posts about the platform.** Actual search results, actual titles, actual view counts, actual comment sections. SEO articles *about* a topic prove the topic sells ads, not that an audience wants it.
-3. **Read the comments on the top 3 results.** This is the highest-value ten minutes available. The complaints under a successful piece are a spec for the next one — what it failed to cover, what people asked that went unanswered.
+3. **Read the comments on the top 3 results.** This is the highest-value ten minutes available. The complaints under a successful piece are a spec for the next one — what it failed to cover, what people asked that went unanswered. **If your environment blocks page fetches, this step produces nothing** — say so at the top of the note rather than letting search snippets stand in for it, and tell the human it's ten minutes they could spend themselves to get the best evidence in the whole exercise.
 4. **Check dates.** A lane that was crowded in 2023 and quiet since is a different opportunity from one crowded last month. Note the recency of the strongest work.
 5. **Look for the format gap, not just the topic gap.** Often the topic is saturated in one format (listicle, tutorial) and empty in another (teardown, honest post-mortem, on-camera experiment).
 
@@ -30,9 +30,10 @@ The open seat is the intersection: demand present, crowd doing something specifi
 
 Every claim you write into the vault carries a mark. The human decides on marked claims; they cannot decide on mush.
 
-- **`observed`** — you saw the data yourself. Include the source and the date you looked.
-- **`inferred`** — reasoning from something you observed. State the reasoning in the same breath.
-- **`guess`** — plausible, unverified. Allowed, but never load-bearing. If a recommendation rests on a guess, say that explicitly.
+- **`observed`** — you opened the source and saw the data yourself. Include the source and the date you looked.
+- **`cited (unopened)`** — it came from a search-result summary, a snippet, or someone else's citation, and **you did not open the page**. Use this whenever a fetch was blocked, rate-limited, or you simply worked from search results. It is not `observed` (you didn't see it) and it is not `guess` (something real said it). Sandboxed and proxied environments block a lot of fetches, so expect to use this mark often and honestly — a research note that is entirely `cited (unopened)` is search-snippet-deep, and the human deserves to know that before deciding on it.
+- **`inferred`** — reasoning from something you observed or cited. State the reasoning in the same breath.
+- **`guess`** — plausible, unverified, nothing behind it. Allowed, but never load-bearing. If a recommendation rests on a guess, say that explicitly.
 
 Live numbers (view counts, follower counts, platform statistics) get the date attached and a note to re-pull them if they're going on camera or into a published claim. A number without a date is a number that will be wrong later and nobody will notice.
 
