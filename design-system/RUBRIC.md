@@ -1,6 +1,6 @@
 # RUBRIC.md — the taste file
 
-> This file is how the AI borrows the human's taste. It starts as a template; it becomes real the first time the human rates a render honestly and their complaints get written in. **Ship bar: nothing goes out below 8/10 against this rubric.** Score every asset before it ships — ideally in a fresh agent session that sees only the render, not the effort behind it.
+> This file is how the AI borrows the human's taste. It starts as a template; it becomes real the first time the human rates a render honestly and their complaints get written in. **Ship bar: nothing goes out below 8/10 against this rubric.** Score every asset before it ships — with the `art-director` critic in `.claude/agents/`, which sees only the render and not the effort behind it. If the asset carries words, run `copy-editor` on them too; the two fail differently.
 
 ## How to score
 

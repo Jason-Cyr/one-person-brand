@@ -14,8 +14,10 @@ The AI doesn't have taste; it borrows the human's — **if you write it down.**
 
 1. Human rates an early render honestly (mine was a 5/10).
 2. Turn every specific complaint into a line in **`RUBRIC.md`** (starter in `design-system/`).
-3. Before anything ships, the agent (or a second, independent agent session — a "critic" that only sees the render, not the effort) scores it against the rubric.
+3. Before anything ships, the **`art-director` critic** (`.claude/agents/art-director.md`) scores it against the rubric. It runs as an independent agent that sees only the render, never the effort — that isolation is the whole mechanism. If the asset carries words, run **`copy-editor`** on them in the same pass.
 4. Set a ship bar (e.g. nothing under 8) and honor it.
+5. **Re-run the critics on every revision, not just the first draft.** The defects that survive to publication are the ones introduced *during* revision — the scrim that was there for a face you later cropped out, the alignment whose reason expired two versions ago. A first-draft-only critique misses them by construction.
+6. When a shipped asset underperforms, write the lesson into two places: a testable line in `RUBRIC.md`, and the *local failure log* at the bottom of the critic file. That is how the critic stops being generic and starts being yours.
 
 Rules that keep renders honest:
 - **Proof at feed size.** Judge the render at the pixel size the audience sees (~380px post, ~168px thumbnail) — not full-screen. If the words don't survive, it fails.

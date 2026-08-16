@@ -24,8 +24,9 @@ Per piece, a tracking sheet (`templates/launch-tracking.md`): same checkpoints, 
 After each launch review, the agent:
 
 1. Extracts **one lesson** — a single sentence about what the next piece does differently (or "no change; the process held," which is also a finding).
-2. Writes it into the project's `context.md` under Key decisions or as a session-log line.
-3. Applies it to the next pipeline row's plan *now*, while it's fresh — not "next time we remember."
+2. Runs the **`sceptic`** critic (`.claude/agents/sceptic.md`) on that lesson before it becomes policy. One launch is n=1, and the most common failure in this whole loop is promoting a coincidence to a rule — the title and the thumbnail changed together, and the lesson credits whichever one you liked. The sceptic's job is to name what evidence would actually settle it.
+3. Writes it into the project's `context.md` under Key decisions or as a session-log line — and, when the lesson concerns a visual or copy, also appends it as a dated, testable rule to the *local failure log* in `.claude/agents/art-director.md` or `.claude/agents/copy-editor.md`. That is how a launch result becomes a defect the critics catch *before* the next piece ships, instead of a note nobody rereads.
+4. Applies it to the next pipeline row's plan *now*, while it's fresh — not "next time we remember."
 
 That's why the human never has to re-teach the system: it was in the files.
 

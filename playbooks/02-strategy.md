@@ -18,6 +18,15 @@
 - Confidence-mark claims: *observed* (you saw the data) vs *inferred* (pattern-matched) vs *guess*. The human decides on marked claims, not on mush.
 - No dollar-promises, no guru math. Positioning is about the open seat, not the fantasy outcome.
 
+## The critic gate (before positioning is treated as decided)
+
+Strategy is where a plausible-sounding doc does the most damage, because everything downstream obeys it for months. Run both thinking critics from `.claude/agents/` on `positioning.md` and `pillars.md` before the human commits:
+
+- **`first-principles`** — is the lane derived from what's actually true about this human and this audience, or assembled from tactics that worked for someone with a team, a budget, or a five-year head start? Its highest-value catch here is the pillar that exists because the niche has that pillar, not because this human has anything to say in it.
+- **`sceptic`** — which claims in the positioning are *measured* versus merely *asserted*? "This lane is open" is a research finding or it is a hope, and the sceptic makes you say which. It will also price the plan against the one resource that actually binds a one-person brand: hours per week.
+
+Re-run both whenever the strategy is revised — a positioning doc drifts quietly, and revision is where borrowed tactics sneak back in.
+
 ## Operating rule
 
 When making anything (Layer 3–5 work), check it against pillars.md and positioning.md. If a new idea fights the strategy, that's a *decision point for the human*, not a silent drift. Strategy files change by decision, and the change gets logged in context.md with its why.

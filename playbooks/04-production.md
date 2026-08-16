@@ -15,6 +15,8 @@ Write video scripts **word-for-word**, engineered, not improvised:
 
 Store scripts in the project (`scripts/<piece>.md`, start from `templates/script.md`), and keep an estimated runtime (~140 spoken words ≈ 1 minute).
 
+**Before the human records, run the `copy-editor` critic** (`.claude/agents/copy-editor.md`) on the script — and on the title and thumbnail copy in the same pass, because the failure it catches most often is relational: a thumbnail that repeats its own title has spent two surfaces on one job. Script problems are cheap to fix in a text file and expensive to fix after a shoot. Re-run it after every rewrite, not just the first draft.
+
 ## The one-take assembly trick
 
 The human records everything in one take, flubs included. Then a script:

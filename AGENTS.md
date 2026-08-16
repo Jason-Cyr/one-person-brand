@@ -44,6 +44,7 @@ Then move this starter's teaching material out of the way so the vault is clean:
 - Move `playbooks/`, `templates/`, and `design-system/` into `3. Resources/starter-kit/`.
 - Rewrite `README.md` to describe *their* vault in 5 lines (keep a link to this starter for credit).
 - Keep `AGENTS.md` and `CLAUDE.md` at the root. In AGENTS.md, replace Mode 1's first paragraph with: *"This vault was bootstrapped on <date> for <name> — do NOT run bootstrap again. Operate in Mode 2."* (CLAUDE.md needs no edit — it has no trigger line.)
+- **Leave `.claude/` exactly where it is.** It holds the critic bench (see below) — those are working parts of the vault, not teaching material. Never move them into `3. Resources/`, and never delete them during tidy-up.
 
 ### 3. First commit
 
@@ -66,6 +67,27 @@ These rules are non-negotiable. They are what makes the memory compound instead 
 4. **Non-destructive, always.** Never overwrite substantial human-written content — append, or propose the change and let them decide. Preserve their voice in anything you edit.
 5. **The vault is the tracker.** No external to-do apps, no side channels. If it matters, it's in a file. `0. Inbox/` catches strays; empty it into the right places when asked to tidy.
 6. **Next Action is always filled.** Every project's context.md ends with at least one concrete next action. A project with no next action is either blocked (say why) or done (propose archiving it).
+7. **Never ship on your own judgment — run the critics.** Nothing visual, nothing public-facing, and no committed plan is "final" until the relevant critic in `.claude/agents/` has reviewed it. See the next section; this rule is not optional and it is not a first-draft-only rule.
+
+## The critic bench (`.claude/agents/`)
+
+You grade your own work too generously. Every agent does. The fix is structural: a second reviewer that sees the artifact and not the effort behind it. Four of them ship with this vault, and they are the difference between output and output worth publishing.
+
+| Critic | Reviews | Run it before… |
+|---|---|---|
+| `art-director` | Anything rendered — thumbnails, carousels, stories, banners, print | any visual is called final |
+| `copy-editor` | Any shipping text — titles, thumbnail copy, captions, scripts, emails, descriptions | any words reach an audience |
+| `first-principles` | Strategy, architecture, process — is this reasoned, or borrowed and inherited? | any structural decision is committed |
+| `sceptic` | Plans, analyses, recommendations — what's wishful, unpriced, or load-bearing-but-asserted | any plan or big call is committed |
+
+**How to run them.** In Claude Code they are subagents: dispatch one with the Task/Agent tool by name (`art-director`, `copy-editor`, `first-principles`, `sceptic`), give it the file paths and nothing else — *never* your reasoning for the choices, because a critic that knows the intention stops seeing the artifact. If your tool doesn't support subagents, open a **fresh session with no history of this work**, paste the critic file as the instructions, and hand it the artifact. The isolation is the mechanism; a critic that shares your context is a rubber stamp.
+
+**The rules that make this work:**
+
+- **Every iteration, not just the first.** The defects these catch are the quiet kind — copy that repeats its own title, vocabulary the audience doesn't have yet, and *vestigial* layout decisions whose justification expired two revisions ago but whose values survived into a "final" file. Those appear *during* revision, so a first-draft-only pass misses them by design.
+- **Pair them.** Anything with words on a picture gets `copy-editor` *and* `art-director` — they fail differently. Any plan worth writing down gets `sceptic` *and* `first-principles`: the sceptic asks "is this true and priced?", first-principles asks "is this even the right problem?"
+- **Log the pass** in the piece's notes or the project's `context.md`: scores, what you applied, and what you consciously rejected and why. A rejected finding with a stated reason is a decision; an ignored one is a defect you'll ship twice.
+- **Feed them back.** Each critic file ends with a *local failure log*. When a piece underperforms, or the human catches something a critic missed, append it there as a dated, testable rule. The critics ship generic and become this human's — same mechanic as the complaint log in `RUBRIC.md`. **This is the most valuable maintenance you do in this vault.** A critic bench that never learns is worth a fraction of one that does.
 
 ## Mode 3 — Grow (adding layers)
 
@@ -82,6 +104,8 @@ The vault is Layer 1 of a six-layer system for running a content brand solo (see
 (Before bootstrap the playbooks are still at the repo root — same filenames.)
 
 Each playbook names its starter templates (`templates/positioning.md`, `pillars.md`, `script.md`, `repurposing-map.md`, `launch-checklist.md`, `launch-tracking.md`) — copy and fill rather than inventing structure.
+
+The critic bench is not a layer — it is a gate that applies to all of them. Layer 3 without `art-director` produces a consistent brand nobody can read at feed size; Layer 2 without `first-principles` and `sceptic` produces a confident strategy doc built entirely out of other people's tactics.
 
 Don't push layers on the human. Layer 1 plus whichever layer currently hurts is the right amount of system. When results come back from the world (analytics, feedback), write them into the vault — that closes the loop, and it's the whole point.
 

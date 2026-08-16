@@ -42,6 +42,19 @@ From then on, every session starts with the agent reading your project's memory 
 
 Later, when something starts to hurt — "my visuals are inconsistent," "editing eats my weekend," "I published, now what?" — ask about it. The agent has a playbook for each of the six layers and will build that layer inside your vault, with working templates to start from.
 
+## The critic bench (included, and the part I'd least want to lose)
+
+An AI grades its own work far too generously. The fix isn't a better prompt — it's a second reader that sees the artifact and not the effort behind it. This kit ships four of them in `.claude/agents/`, and your agent is instructed to run them before anything is called final:
+
+| | Reviews | Catches the thing you'd otherwise ship |
+|---|---|---|
+| **Art director** | Thumbnails, carousels, stories, banners, print | Judges the render at the size people *actually* see it — 168px in a feed, not full-screen on your monitor |
+| **Copy editor** | Titles, thumbnail copy, captions, scripts, emails | The thumbnail that repeats its own title; the word only *you* know yet |
+| **First-principles thinker** | Strategy, architecture, process | The plan assembled out of other people's tactics and constraints that expired a year ago |
+| **Sceptic** | Plans, analyses, recommendations | The one claim everything rests on that nobody ever checked |
+
+Two rules make them work, and both are written into the agent's instructions: run them **on every revision, not just the first draft** (the quiet defects appear *during* revision), and **feed results back** — each critic file ends with a failure log, so when something underperforms, the lesson becomes a rule that critic applies forever. They ship generic and become yours.
+
 **What you need:** an agent that can read/write files and run git (Claude Code, Cursor, or similar), and git installed. That's it. No subscriptions, no GitHub account, no cloud anything.
 
 ## What's inside
@@ -53,6 +66,7 @@ Later, when something starts to hurt — "my visuals are inconsistent," "editing
 | `templates/` | Working scaffolds for every layer: memory (`context.md`, `pipeline.md`), strategy (`positioning.md`, `pillars.md`), production (`script.md`), repurposing (`repurposing-map.md`), distribution (`launch-checklist.md`, `launch-tracking.md`). |
 | `playbooks/` | The six layers from the video, one playbook each — your agent uses these when you're ready to add a layer. |
 | `design-system/` | A working "brand as code" starter: one HTML template + a render script that turns it into publishable PNGs, plus a rubric template for taste. |
+| `.claude/agents/` | **The critic bench** — four independent reviewers your agent runs on its own work before anything ships: an **art director**, a **copy editor**, a **first-principles thinker**, and a **sceptic**. These stay in your vault after setup. |
 
 ## The six layers (the 30-second version)
 
