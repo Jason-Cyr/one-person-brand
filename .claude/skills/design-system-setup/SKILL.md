@@ -41,6 +41,7 @@ Small and decisive. A large design system nobody obeys is worth less than five r
 - Start from `design-system/slide-template.html`; make one template per surface the human named, all sharing the token block.
 - Confirm `design-system/render.py` runs end to end and produces an exact-size PNG. **A design system that can't render is a document, not a system.**
 - Render one real asset — something they actually need — and show it to them at feed size. Do not ship the setup on a lorem-ipsum sample.
+- **If the brand is photo-led and you have no photograph**, pick a text-led surface for this first render instead, and separately hand the human a shot brief for the photo-led one. Never substitute a generated or CSS-drawn image for a real frame. `Assets/` is gitignored, so any agent not on the human's own machine has no imagery at all — that is a permanent condition of this vault, not a one-off.
 
 ## Step 4 — Seed the rubric, then get out of the way
 

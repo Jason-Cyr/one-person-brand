@@ -26,6 +26,12 @@ Rules that keep renders honest:
 - **Empty space is a feature.** If a layout feels full, cut content — don't shrink type.
 - **Fixed type scale.** Pick 4–6 sizes; never invent in-betweens. Scale contrast is what reads as confidence.
 
+## About "it takes me forever" — the honest answer
+
+People arrive at this layer with two complaints — *inconsistent* and *slow* — and everything above solves the first. Be straight with them about the second: **building the system is slower than making the asset by hand, and stays slower for roughly the first three or four.** You are paying up front for a template, a token set, and a rubric. The payback is real and then it compounds — every later asset is a text edit and a render, new surfaces inherit the system for free, and the "what font was that again" tax goes to zero — but it arrives on the fourth asset, not the first.
+
+Say this out loud rather than letting them discover it. A human who was promised speed and gets a slower afternoon abandons the system one asset before it starts paying.
+
 ## Operating rule
 
 New surface = new template *in the same token file*, never a one-off in a design app. If a render fights the system, either the system grows (logged decision) or the render loses.
