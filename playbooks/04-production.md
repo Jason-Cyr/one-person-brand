@@ -15,7 +15,12 @@ Write video scripts **word-for-word**, engineered, not improvised:
 
 Store scripts in the project (`scripts/<piece>.md`, start from `templates/script.md`), and keep an estimated runtime (~140 spoken words ≈ 1 minute).
 
-**Before the human records, run the `copy-editor` critic** (`.claude/agents/copy-editor.md`) on the script — and on the title and thumbnail copy in the same pass, because the failure it catches most often is relational: a thumbnail that repeats its own title has spent two surfaces on one job. Script problems are cheap to fix in a text file and expensive to fix after a shoot. Re-run it after every rewrite, not just the first draft.
+**Before the human records, two passes on the script** — both cheap in a text file and expensive after a shoot:
+
+1. **`fact-check`** (`.claude/skills/fact-check/SKILL.md`) on every number, date, quote, attribution and mechanism claim, including the human's own results. A wrong claim caught here costs a line edit; caught after publishing it costs credibility, and the correction reaches a fraction of the people who saw it. It also marks the live numbers that need a re-pull on publish day.
+2. **`copy-editor`** (`.claude/agents/copy-editor.md`) on the script — and on the title and thumbnail copy in the same pass, because the failure it catches most often is relational: a thumbnail that repeats its own title has spent two surfaces on one job.
+
+Re-run both after every rewrite, not just the first draft.
 
 ## The one-take assembly trick
 

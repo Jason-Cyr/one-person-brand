@@ -89,6 +89,26 @@ You grade your own work too generously. Every agent does. The fix is structural:
 - **Log the pass** in the piece's notes or the project's `context.md`: scores, what you applied, and what you consciously rejected and why. A rejected finding with a stated reason is a decision; an ignored one is a defect you'll ship twice.
 - **Feed them back.** Each critic file ends with a *local failure log*. When a piece underperforms, or the human catches something a critic missed, append it there as a dated, testable rule. The critics ship generic and become this human's — same mechanic as the complaint log in `RUBRIC.md`. **This is the most valuable maintenance you do in this vault.** A critic bench that never learns is worth a fraction of one that does.
 
+### The maker: `designer`
+
+`.claude/agents/designer.md` is the one agent on the bench that *builds* rather than judges. It reads the design system, works only in tokens and templates, renders, and proofs the result at feed size — then hands off to `art-director`. **It never approves its own work**, and neither do you: a maker who also grades is the exact failure the bench exists to prevent. If no `design-system/DESIGN.md` exists yet, `designer` will tell you to run the `design-system-setup` skill first, and it's right to.
+
+## Skills (`.claude/skills/`)
+
+Skills are procedures you load and follow; the agents above are independent reviewers you dispatch. Three ship with this vault:
+
+| Skill | Use it when |
+|---|---|
+| `content-research` | deciding what to make — lane checks, topic validation, audience-demand evidence, filling in `positioning.md` or the idea bank |
+| `fact-check` | before recording, publishing, or sending anything with numbers, dates, quotes, attributions, or claims about how something works |
+| `design-system-setup` | the human's visuals look inconsistent or slow, or any design work is asked for and no `DESIGN.md` exists yet |
+
+`design-system-setup` is a skill rather than a subagent for a concrete reason: it has to **interview the human**, and a subagent can't ask them anything. Same test applies if you add your own — anything needing the human in the room is a skill.
+
+**If your tool doesn't support skills** (they're a Claude Code convention): read the `SKILL.md` file directly and follow it. They're plain markdown with no special syntax, and nothing in them depends on being auto-loaded.
+
+Two of the three exist because research is where confident-sounding work does the most damage. `content-research` marks every claim *observed / inferred / guess* so the human decides on marked claims rather than mush; `fact-check` runs before the record button, when a mistake is still free. Neither replaces the critics — anything that becomes positioning or a committed plan still goes to `sceptic` and `first-principles`.
+
 ## Mode 3 — Grow (adding layers)
 
 The vault is Layer 1 of a six-layer system for running a content brand solo (see `playbooks/`, or `3. Resources/starter-kit/playbooks/` after bootstrap). When the human's need matches a layer, read its playbook first, then build it *inside the vault*:

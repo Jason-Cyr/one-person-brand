@@ -55,6 +55,16 @@ An AI grades its own work far too generously. The fix isn't a better prompt — 
 
 Two rules make them work, and both are written into the agent's instructions: run them **on every revision, not just the first draft** (the quiet defects appear *during* revision), and **feed results back** — each critic file ends with a failure log, so when something underperforms, the lesson becomes a rule that critic applies forever. They ship generic and become yours.
 
+A fifth agent, **designer**, is the one that *builds* the visuals — working only in your design tokens and templates, never one-off styling, and proofing every render at the size people actually see it before the art director ever looks at it. Makers and judges stay separate on purpose.
+
+## The skills (also included)
+
+Three procedures your agent follows, in `.claude/skills/`:
+
+- **`content-research`** — deciding what to make. Checks real demand *and* real crowding (the same evidence proves both, which is where most people fool themselves), reads the comments under the top results for what they failed to cover, and marks every claim **observed / inferred / guess** so you're deciding on marked claims instead of mush. It will also tell you plainly when the answer is "don't make this."
+- **`fact-check`** — run before the record button or the send button, when a mistake is still free. Pulls every checkable claim, chases citations to a primary source, catches the true-in-2024-wrong-in-2026 problem, and hands back replacement lines rather than warnings. Includes your *own* numbers — self-reported results are the ones nobody else will catch.
+- **`design-system-setup`** — builds `DESIGN.md` with you, once: palette, a fixed type scale, an "is / is not" list, and templates that render. It's a skill rather than an agent because it has to interview you, and a subagent can't ask you anything.
+
 **What you need:** an agent that can read/write files and run git (Claude Code, Cursor, or similar), and git installed. That's it. No subscriptions, no GitHub account, no cloud anything.
 
 ## What's inside
@@ -66,7 +76,8 @@ Two rules make them work, and both are written into the agent's instructions: ru
 | `templates/` | Working scaffolds for every layer: memory (`context.md`, `pipeline.md`), strategy (`positioning.md`, `pillars.md`), production (`script.md`), repurposing (`repurposing-map.md`), distribution (`launch-checklist.md`, `launch-tracking.md`). |
 | `playbooks/` | The six layers from the video, one playbook each — your agent uses these when you're ready to add a layer. |
 | `design-system/` | A working "brand as code" starter: one HTML template + a render script that turns it into publishable PNGs, plus a rubric template for taste. |
-| `.claude/agents/` | **The critic bench** — four independent reviewers your agent runs on its own work before anything ships: an **art director**, a **copy editor**, a **first-principles thinker**, and a **sceptic**. These stay in your vault after setup. |
+| `.claude/agents/` | **The critic bench** — four independent reviewers your agent runs on its own work before anything ships: an **art director**, a **copy editor**, a **first-principles thinker**, and a **sceptic** — plus a **designer** that builds the visuals they judge. These stay in your vault after setup. |
+| `.claude/skills/` | Three working procedures: **content research** (what to make, with sources), **fact-check** (before you publish, not after), and **design-system setup** (builds your visual system with you, once). |
 
 ## The six layers (the 30-second version)
 

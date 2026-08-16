@@ -4,6 +4,8 @@
 
 ## What to build
 
+**Run the `design-system-setup` skill** (`.claude/skills/design-system-setup/SKILL.md`) for the first build — it walks the interview and produces the files below. After that, the `designer` agent (`.claude/agents/designer.md`) makes every asset from what the setup produced, and `art-director` judges it.
+
 1. **`design-system/DESIGN.md`** — the brand's rules as a document the agent reads before designing anything: palette (as CSS tokens), 2–3 typefaces with roles, spacing unit, what the brand *is/is not*. Start small; evolve it by rendered A/B, and log each change with its why.
 2. **Templates** — one HTML file per surface, sharing the same tokens. Start from `design-system/slide-template.html` here. Typical surfaces: square/4:5 social post, 9:16 story/reel frame, 16:9 thumbnail. Add print later (it needs inverted ground + darker inks — screen colors print weak).
 3. **`design-system/render.py`** — turns templates into exact-size PNGs with headless Chrome. Already in this kit; it renders any `.slide` element at the size its class declares.

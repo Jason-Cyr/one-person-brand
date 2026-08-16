@@ -10,6 +10,7 @@ Every launch runs against a checklist file (`templates/launch-checklist.md`), co
 - Captions/chapters built from the final export, not a draft.
 - The end of the piece stays clean for end-screens/CTAs.
 - A pinned comment/question ready at publish — the first hour's replies are yours to start.
+- **Live numbers re-pulled on publish day.** Anything `fact-check` flagged as drifting — follower counts, platform statistics, pricing, "currently" statements — gets checked again against the description, the thumbnail, and the script's spoken claims before it goes out. A number that was right when it was written is the most common way an honest piece ships a false claim.
 
 ## Measuring
 

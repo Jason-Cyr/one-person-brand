@@ -14,6 +14,8 @@
 
 ## How the agent does the research
 
+**Use the `content-research` skill** (`.claude/skills/content-research/SKILL.md`) — it carries the full method. The short version:
+
 - Real sources over vibes: platform search results, top performers in the niche, what titles/formats repeat (repetition = validated demand AND crowding — both matter).
 - Confidence-mark claims: *observed* (you saw the data) vs *inferred* (pattern-matched) vs *guess*. The human decides on marked claims, not on mush.
 - No dollar-promises, no guru math. Positioning is about the open seat, not the fantasy outcome.
