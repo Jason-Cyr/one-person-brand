@@ -17,7 +17,7 @@ A synced folder (Dropbox/iCloud) syncs *state*. Git syncs *change*. Because the 
 ## Operating rules (same as AGENTS.md — repeated because they ARE the layer)
 
 1. Read the project's `context.md` in full before working.
-2. Commit + push after every logical unit of work.
+2. Commit after every logical unit of work — and push only to a remote the human has confirmed is private.
 3. Write decisions/results back before ending a session.
 4. Never overwrite substantial human-written text — append or propose.
 5. Everything lives here; if it matters, it's a file.
