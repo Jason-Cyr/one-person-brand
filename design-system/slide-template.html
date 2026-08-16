@@ -8,7 +8,10 @@
   Then every surface renders from the same tokens and the brand cannot drift.
 
   Formats: class "slide" = 1080x1350 (4:5 post) · add "reel" = 1080x1920 ·
-  add "yt" = 1920x1080 · add "thumb" = 1280x720. render.py reads the class.
+  add "yt" = 1920x1080 · add "thumb" = 1280x720 · add "card" = 1800x1200 (6x4in
+  print at 300dpi) · add "banner" = 2560x1440 (channel art). render.py reads the class.
+  Helper classes on INNER elements must not start with "slide" — "slide-body" would
+  be picked up as a page of its own.
 
   Render:  python3 render.py slide-template.html --out out/
   (Needs Chrome/Chromium + Pillow. Override browser with CHROME=/path/to/chrome)
@@ -37,6 +40,9 @@
   .slide.reel{width:1080px;height:1920px;padding:96px 96px 460px}
   .slide.yt{width:1920px;height:1080px;padding:90px 120px}
   .slide.thumb{width:1280px;height:720px;padding:60px}
+  .slide.card{width:1800px;height:1200px;padding:140px}
+  /* banner safe area is the centre 1546x423 — anything that must survive goes inside it */
+  .slide.banner{width:2560px;height:1440px;padding:509px 507px}
   .slide.show{display:block}
 
   .kicker{font-family:'Courier New',monospace;font-size:var(--s1);letter-spacing:3px;

@@ -36,22 +36,31 @@ Assets/            ← binaries (photos, exports). Already gitignored by the kit
 
 Put a `.gitkeep` file in every folder that would otherwise be empty (except `Assets/` — it's gitignored) — git does not track empty directories, and without this the PARA skeleton silently vanishes from the first commit.
 
-For **each active project** the human named, create `1. Projects/<name>/` (use their name for it verbatim — spaces and punctuation are fine; don't slugify):
+Write down anything that is true of the human rather than of one project — their voice, who they're for, standing rules — **once**, in `2. Areas/voice-and-audience.md`, and have each project's `context.md` link to it. People answer the voice question in prose, and copying that answer into three project files guarantees three drifting versions of it within a month.
+
+For **each active project**, create `1. Projects/<name>/` (spaces and punctuation are fine; don't slugify). **People describe projects rather than naming them** — "an Instagram account", "a blog I've been neglecting". If they gave you a real name ("Slow Clay"), use it verbatim. If they only described it, propose a short obvious name, use it, and tell them in one line that folders are safe to rename whenever they like. Don't stall the bootstrap over naming, and don't invent something clever.
 - `context.md` — from `templates/context.md`. Fill in everything you learned in the interview. This file is the project's living memory.
-- `pipeline.md` — from `templates/pipeline.md`, if the project produces recurring pieces of work (videos, posts, releases). Skip it for one-shot projects.
+- `pipeline.md` — from `templates/pipeline.md`, if the project produces recurring pieces of work (videos, posts, releases). Skip it for one-shot projects; if it's genuinely borderline, create it — an unused tracker costs nothing, a missing one costs the habit. **Rename the template's default stages to the human's actual craft.** They ship as a video chain (`Researching → Packaging → Shipping`), which is nonsense for an email essay or a batch of pots. Ask yourself what steps *this* person's work passes through, and write those.
 
 Then move this starter's teaching material out of the way so the vault is clean:
-- Move `playbooks/`, `templates/`, and `design-system/` into `3. Resources/starter-kit/`.
+- Move `playbooks/` and `templates/` into `3. Resources/starter-kit/`.
+- **Leave `design-system/` at the root.** It is a working part of the vault, not teaching material: `render.py` is executable, `RUBRIC.md` is where the human's taste accumulates over months, and `DESIGN.md` gets written into it later. Every reference to these files across the kit assumes the root path.
 - Rewrite `README.md` to describe *their* vault in 5 lines (keep a link to this starter for credit).
-- Keep `AGENTS.md` and `CLAUDE.md` at the root. In AGENTS.md, replace Mode 1's first paragraph with: *"This vault was bootstrapped on <date> for <name> — do NOT run bootstrap again. Operate in Mode 2."* (CLAUDE.md needs no edit — it has no trigger line.)
+- Keep `AGENTS.md` and `CLAUDE.md` at the root. In AGENTS.md, **delete the whole of Mode 1** — every step, not just its opening line — and leave in its place: *"This vault was bootstrapped on <date> for <name> — do NOT run bootstrap again. Operate in Mode 2."* Deleting only the first paragraph leaves the entire bootstrap procedure live under a heading that says not to run it, and removes the very condition that would have stopped a later agent from running it. In CLAUDE.md, change "how to bootstrap the human's second brain on first contact, and" to nothing — the rest of that file stays as-is.
 - **Leave `.claude/` exactly where it is.** It holds the critic bench (see below) — those are working parts of the vault, not teaching material. Never move them into `3. Resources/`, and never delete them during tidy-up.
+- **Paths after the move.** `playbooks/…` and `templates/…` are now under `3. Resources/starter-kit/`. The playbooks still refer to each other and to `templates/…` by their old root-relative paths — read those as `3. Resources/starter-kit/…`. `design-system/` and `.claude/` are unchanged. Note the moved path contains spaces: quote it in shell commands.
 
 ### 3. First commit
 
-`git add -A`, commit (`"bootstrap content brand vault: <projects>"`). Then handle the remote — carefully:
-- **If `origin` points at this starter kit or a fork of it** (any URL containing `one-person-brand`): `git remote remove origin`. The kit is a seed, not their upstream — never push a human's vault toward the starter repo or a public fork; that would publish their private memory.
-- **If a remote the human owns exists**, push to it.
+**Deal with the remote *before* you commit** — a commit made while `origin` still points at the starter kit is one accidental `git push` away from publishing a stranger's private memory.
+
+- **If `origin` points at this starter kit or a fork of it** (any URL containing `one-person-brand`): `git remote remove origin`. The kit is a seed, not their upstream.
+- **If any other remote exists, do not push to it until you have checked that it is private and not a fork.** `gh repo view --json visibility,isFork` if `gh` is available; otherwise ask the human directly, in one line: *"Is <url> a private repo you own?"* **A fork is public by default, and the README invites forking** — so a remote that merely isn't the starter kit is not yet safe. Refuse to push to anything public or forked, and say why in one sentence. When in doubt, don't push; a missing backup is recoverable, a published vault is not.
 - **Otherwise the vault is complete as-is** — a local folder is the intended default. Mention once, in one line, as optional: a **private** remote (GitHub or similar) makes the vault follow them across devices; offer to set it up only if they want that. Never present a remote as required, and never suggest a public one — this is their memory, not content.
+
+**Then check git can actually commit.** If `git config user.email` is empty, git aborts with *"Please tell me who you are"* — likely on a machine belonging to exactly the audience this kit targets. Set a repo-local identity from the interview (`git config --local user.name "<their name>"`, `git config --local user.email "<name>@localhost"`), mention it in one line so they can correct it, and move on. Do not fail the bootstrap over it, and do not commit under an invented identity without saying so.
+
+Now `git add -A` and commit (`"bootstrap content brand vault: <projects>"`).
 
 ### 4. Tell them what happened
 
@@ -61,7 +70,7 @@ Three sentences, not a tour: what you built, the one habit that matters (*start 
 
 These rules are non-negotiable. They are what makes the memory compound instead of rot.
 
-1. **Read before you work.** At the start of any session, read the relevant project's `context.md` in full (and `pipeline.md` if present). Never start from zero; never ask the human to re-brief you on things the files already say.
+1. **Read before you work.** At the start of any session, read the relevant project's `context.md` in full (and `pipeline.md` if present). Never start from zero; never ask the human to re-brief you on things the files already say. **If the project has no `context.md`, create one from `templates/context.md` before you do anything else** — fill in what you can from the folder's existing files and say in one line that you did. A project without memory is the exact failure this vault exists to prevent, so fix it on sight rather than working around it.
 2. **Commit every change** (and push, if a remote exists). After each logical unit of work — not just at session end — commit with a clear message. Never end a session with a dirty working tree. Never force-push; never rewrite history. The human may edit files by hand between sessions: **read the recent diffs** (`git log --stat`, `git diff HEAD~5`) — their edits are briefings you weren't in the room for.
 3. **Write back before you finish.** Any session that changed anything updates the project's `context.md`: decisions made (with the *why*), work produced, next actions, open questions, and a dated session-log line. If the work moved a pipeline item's stage, update `pipeline.md` too.
 4. **Non-destructive, always.** Never overwrite substantial human-written content — append, or propose the change and let them decide. Preserve their voice in anything you edit.
@@ -80,14 +89,22 @@ You grade your own work too generously. Every agent does. The fix is structural:
 | `first-principles` | Strategy, architecture, process — is this reasoned, or borrowed and inherited? | any structural decision is committed |
 | `sceptic` | Plans, analyses, recommendations — what's wishful, unpriced, or load-bearing-but-asserted | any plan or big call is committed |
 
-**How to run them.** In Claude Code they are subagents: dispatch one with the Task/Agent tool by name (`art-director`, `copy-editor`, `first-principles`, `sceptic`), give it the file paths and nothing else — *never* your reasoning for the choices, because a critic that knows the intention stops seeing the artifact. If your tool doesn't support subagents, open a **fresh session with no history of this work**, paste the critic file as the instructions, and hand it the artifact. The isolation is the mechanism; a critic that shares your context is a rubber stamp.
+**How to run them — three tiers, in order of preference. Use the best one your environment allows, and always record which tier you used.**
+
+1. **Subagent (full isolation — the real thing).** In Claude Code, dispatch by name (`art-director`, `copy-editor`, `first-principles`, `sceptic`) with the Task/Agent tool. Give it the file paths and nothing else — **never your reasoning for the choices**, because a critic that knows the intention stops seeing the artifact.
+2. **Fresh human-opened session (full isolation, needs the human).** Open a new session with no history of this work, paste the critic file in as the instructions, hand it only the artifact. Offer this to the human when tier 1 isn't available and the stakes are high.
+3. **Same-session second pass (degraded — say so out loud).** If you have neither, run the critic file yourself under strict discipline: re-read *only* the critic file and the artifact, do not re-read your own notes, plan, or rationale, and write the full review before you allow yourself to explain any choice. Then **label the result `TIER 3 — SELF-REVIEW, NOT INDEPENDENT`** wherever you log it.
+
+**Be honest about the tier and never launder tier 3 as tier 1.** A subagent cannot spawn another subagent, so a critic invoked from inside another agent is always tier 3 at best — if you are yourself a subagent, report your findings up and let the orchestrator run the critic. Isolation is the mechanism; a critic that shares your context is a rubber stamp, and a rubber stamp recorded as a review is worse than no review, because it retires the doubt without earning it.
+
+**Does bootstrap need a critic pass?** No — Mode 1 is scaffolding, not shipping, and blocking it on a review the environment may not support helps nobody. The gate starts the first time real work is committed to: a positioning doc, a plan, or anything with an audience. Don't run the bench on an empty vault.
 
 **The rules that make this work:**
 
 - **Every iteration, not just the first.** The defects these catch are the quiet kind — copy that repeats its own title, vocabulary the audience doesn't have yet, and *vestigial* layout decisions whose justification expired two revisions ago but whose values survived into a "final" file. Those appear *during* revision, so a first-draft-only pass misses them by design.
 - **Pair them.** Anything with words on a picture gets `copy-editor` *and* `art-director` — they fail differently. Any plan worth writing down gets `sceptic` *and* `first-principles`: the sceptic asks "is this true and priced?", first-principles asks "is this even the right problem?"
 - **Log the pass** in the piece's notes or the project's `context.md`: scores, what you applied, and what you consciously rejected and why. A rejected finding with a stated reason is a decision; an ignored one is a defect you'll ship twice.
-- **Feed them back.** Each critic file ends with a *local failure log*. When a piece underperforms, or the human catches something a critic missed, append it there as a dated, testable rule. The critics ship generic and become this human's — same mechanic as the complaint log in `RUBRIC.md`. **This is the most valuable maintenance you do in this vault.** A critic bench that never learns is worth a fraction of one that does.
+- **Feed them back.** Each critic file has a **`## Local failure log`** section (mid-file, not at the very end — append inside that section, never below it, or you'll corrupt the report spec that follows). When a piece underperforms, or the human catches something a critic missed, append there as a dated, testable rule. The critics ship generic and become this human's — same mechanic as the complaint log in `RUBRIC.md`. **This is the most valuable maintenance you do in this vault.** A critic bench that never learns is worth a fraction of one that does.
 
 ### The maker: `designer`
 

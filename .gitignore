@@ -8,3 +8,12 @@ Assets/
 # OS noise
 .DS_Store
 Thumbs.db
+
+# Secrets — never commit these. Layer 4 pipelines (transcription, posting) need
+# API keys; keys go in .env and .env stays out of the vault's history.
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+secrets/

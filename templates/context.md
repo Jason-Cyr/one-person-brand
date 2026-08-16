@@ -1,6 +1,6 @@
 # context.md — <Project Name>
 
-> **STANDING RULE (for the agent):** This file is the project's living memory. Read it in full at the start of ANY session on this project; update it (decisions + why, work produced, next actions, open questions, and a dated session-log line) at the end of EVERY session that changed anything — then commit and push.
+> **STANDING RULE (for the agent):** This file is the project's living memory. Read it in full at the start of ANY session on this project; update it (decisions + why, work produced, next actions, open questions, and a dated session-log line) at the end of EVERY session that changed anything — then commit (and push, if a confirmed-private remote exists).
 
 **Last updated:** YYYY-MM-DD (session N — one-line summary)
 

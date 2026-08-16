@@ -1,6 +1,6 @@
 # One-Person Brand — agent instructions
 
-Read `AGENTS.md` in this folder and follow it exactly. It is your operating manual for this repository: how to bootstrap the human's second brain on first contact, and the non-negotiable session rules (read `context.md` first; commit and push every change; write decisions back before ending) for every session after.
+Read `AGENTS.md` in this folder and follow it exactly. It is your operating manual for this repository: how to bootstrap the human's second brain on first contact, and the non-negotiable session rules (read `context.md` first; commit every change — and push only to a remote the human has confirmed is private; write decisions back before ending) for every session after.
 
 `.claude/agents/` holds this vault's **critic bench** — `art-director`, `copy-editor`, `first-principles`, and `sceptic` — plus `designer`, the maker they judge. Nothing visual, nothing public-facing, and no committed plan is final until the relevant critic has reviewed it — on every revision, not just the first draft.
 

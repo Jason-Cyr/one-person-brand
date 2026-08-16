@@ -46,6 +46,8 @@ Small and decisive. A large design system nobody obeys is worth less than five r
 
 Have them rate that first real render honestly. Expect a 5 or 6; that is the correct outcome and worth saying out loud, because a first system that scores 9 means they were being polite. **Turn every specific complaint into a line in `RUBRIC.md`** — testable, not aspirational ("marks must be earned; max 2–3 per asset" beats "use marks tastefully").
 
+**Then close the loop before anything publishes.** A 5 or 6 seeds the rubric; it does not ship. Hand the asset to `designer` and run `designer` → `art-director` → `designer` until it clears the 8/10 ship bar in `RUBRIC.md`. A first render that stays at 6 and goes out anyway teaches the human that the rubric is decorative, and the whole taste loop dies there.
+
 Then log the decisions and their *why* in the project's `context.md`, and hand ongoing work to the `designer` agent.
 
 ## Done when

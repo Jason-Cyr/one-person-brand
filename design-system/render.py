@@ -31,7 +31,9 @@ CHROME_CANDIDATES = [
 
 def chrome_bin():
     for c in CHROME_CANDIDATES:
-        if c and os.path.exists(c):
+        # isfile + X_OK, not exists: some installs leave a *directory* at one of
+        # these paths, and exec'ing a directory fails with a baffling error.
+        if c and os.path.isfile(c) and os.access(c, os.X_OK):
             return c
     sys.exit("Chrome/Chromium not found — set CHROME=/path/to/chrome")
 
@@ -50,8 +52,12 @@ def main():
     # 1920x1080 video frame), "card" (6x4in postcard at 300dpi, 1800x1200), or
     # "banner" (YouTube channel art, 2560x1440 — safe area is the center
     # 1546x423), or "thumb" (YouTube video thumbnail, 1280x720).
+    # The lookahead keeps helper classes out: "slide thumb" matches, but
+    # "slide-body" / "slide__title" — natural names for inner wrappers — do not.
+    # Without it those render as phantom pages, and because the page JS selects
+    # by the real CSS `.slide` selector the two lists silently desync.
     slides = []
-    for m in re.finditer(r'<div class="slide([^"]*)"([^>]*)>', html):
+    for m in re.finditer(r'<div class="slide(?=[" ])([^"]*)"([^>]*)>', html):
         sp = re.search(r'data-span="(\d+)"', m.group(2))
         w, h = 1080, 1350
         if re.search(r'\breel\b', m.group(1)):
@@ -91,6 +97,10 @@ def main():
                         f"file://{src}?slide={i}"],
                        check=True, capture_output=True)
         img = Image.open(shot)
+        if img.height < h or img.width < w * span:
+            sys.exit(f"{shot}: Chrome returned {img.width}x{img.height}, need at least "
+                     f"{w * span}x{h}. The slide's format class is probably missing from "
+                     f"the template CSS — cropping now would silently pad the PNG instead.")
         for k in range(span):
             page += 1
             out = os.path.join(args.out, f"{base}-{page:02d}.png")

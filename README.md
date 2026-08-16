@@ -53,7 +53,7 @@ An AI grades its own work far too generously. The fix isn't a better prompt — 
 | **First-principles thinker** | Strategy, architecture, process | The plan assembled out of other people's tactics and constraints that expired a year ago |
 | **Sceptic** | Plans, analyses, recommendations | The one claim everything rests on that nobody ever checked |
 
-Two rules make them work, and both are written into the agent's instructions: run them **on every revision, not just the first draft** (the quiet defects appear *during* revision), and **feed results back** — each critic file ends with a failure log, so when something underperforms, the lesson becomes a rule that critic applies forever. They ship generic and become yours.
+Two rules make them work, and both are written into the agent's instructions: run them **on every revision, not just the first draft** (the quiet defects appear *during* revision), and **feed results back** — each critic file has a failure log, so when something underperforms, the lesson becomes a rule that critic applies forever. They ship generic and become yours.
 
 A fifth agent, **designer**, is the one that *builds* the visuals — working only in your design tokens and templates, never one-off styling, and proofing every render at the size people actually see it before the art director ever looks at it. Makers and judges stay separate on purpose.
 
@@ -65,7 +65,15 @@ Three procedures your agent follows, in `.claude/skills/`:
 - **`fact-check`** — run before the record button or the send button, when a mistake is still free. Pulls every checkable claim, chases citations to a primary source, catches the true-in-2024-wrong-in-2026 problem, and hands back replacement lines rather than warnings. Includes your *own* numbers — self-reported results are the ones nobody else will catch.
 - **`design-system-setup`** — builds `DESIGN.md` with you, once: palette, a fixed type scale, an "is / is not" list, and templates that render. It's a skill rather than an agent because it has to interview you, and a subagent can't ask you anything.
 
-**What you need:** an agent that can read/write files and run git (Claude Code, Cursor, or similar), and git installed. That's it. No subscriptions, no GitHub account, no cloud anything.
+**What you need**, by layer — the foundation genuinely needs almost nothing, and the later layers are honest about their dependencies:
+
+| To… | You need |
+|---|---|
+| Build the vault and run it (Layer 1 — the part that matters most) | an agent that reads/writes files (Claude Code, Cursor, or similar), and git installed |
+| Use the research and fact-check skills | the same, plus web access for your agent |
+| Render your design system (Layer 3) | the same, plus `python3`, Pillow (`pip install pillow`), and Chrome or Chromium |
+
+No subscriptions and no GitHub account, at any layer. The vault itself is a folder on your machine and stays there unless you decide otherwise.
 
 ## What's inside
 
